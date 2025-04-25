@@ -69,7 +69,12 @@ def upload():
         print(f"Extracted Text: {extracted_text}")
 
         # Convert text to speech
+        if not extracted_text.strip():
+            return "No text extracted from the image.", 400
+
         tts = gTTS(text=extracted_text, lang='hi' if language == 'hin' else 'mr' if language == 'mar' else 'en')
+
+        # tts = gTTS(text=extracted_text, lang='hi' if language == 'hin' else 'mr' if language == 'mar' else 'en')
         audio_path = os.path.join(app.config['OUTPUT_FOLDER'], 'spoken.mp3')
         tts.save(audio_path)
 
