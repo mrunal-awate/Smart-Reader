@@ -1,22 +1,22 @@
-# Use an official Python runtime as a parent image
+# Use a Python base image
 FROM python:3.12-slim
 
-# Install dependencies
+# Install system dependencies if needed
 RUN apt-get update && apt-get install -y \
-    tesseract-ocr \
-    && apt-get clean
+    # Add necessary dependencies here if required
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+# Copy the application code into the container
 COPY . /app
 
-# Install required Python packages
-RUN pip install --no-cache-dir -r requirements.txt
+# Add platform-specific pip install command
+RUN if [ "$(uname)" == "Darwin" ]; then pip install --no-cache-dir -r requirements.txt; fi
+RUN if [ "$(uname)" == "Linux" ]; then pip install --no-cache-dir -r requirements.txt; fi
 
-# Expose the port that Flask will run on
-EXPOSE 8080
+# Expose the port the app will run on
+EXPOSE 5000
 
-# Run the application
+# Command to run the application
 CMD ["python", "app.py"]
