@@ -1,25 +1,18 @@
-# Use an official Python runtime as a parent image
-FROM python:3.12-slim
+# Use a specific, secure Python image
+FROM python:3.12.4-slim
 
-# Set the working directory in the container
-WORKDIR /app
+# Install dependencies and security updates
+RUN apt-get update && apt-get upgrade -y
 
-# Copy the current directory contents into the container at /app
-COPY . /app
-
-# Install system dependencies (like Tesseract)
-RUN apt-get update && \
-    apt-get install -y tesseract-ocr && \
-    apt-get clean
-
-# Install any needed packages specified in requirements.txt
+# Install necessary Python libraries
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 8080 available to the world outside this container
+# Set up app and other configurations
+COPY . /app
+WORKDIR /app
+
+# Expose the application port
 EXPOSE 8080
 
-# Define environment variable
-ENV FLASK_APP=app.py
-
-# Run app.py when the container launches
+# Run the application
 CMD ["python", "app.py"]
