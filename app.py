@@ -1,9 +1,23 @@
 from flask import Flask, render_template, request, send_from_directory, jsonify
 from werkzeug.utils import secure_filename
 import os
-import pytesseract
-pytesseract.pytesseract.tesseract_cmd = r"C:\Users\Mrunal\Tesseract_OCR\tesseract.exe"
+# import pytesseract
+# pytesseract.pytesseract.tesseract_cmd = r"C:\Users\Mrunal\Tesseract_OCR\tesseract.exe"
 from gtts import gTTS
+
+
+import pytesseract
+
+# If on Windows, you can leave the path, but on cloud servers, it will default to system path
+try:
+    if os.name == 'nt':  # For Windows, you can still specify the path
+        pytesseract.pytesseract.tesseract_cmd = r"C:\Users\Mrunal\Tesseract_OCR\tesseract.exe"
+    else:  # For Linux environments, let Tesseract be found on the system path
+        pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # typical path on Linux servers
+except Exception as e:
+    print(f"Error configuring Tesseract: {e}")
+
+
 
 # Set up Tesseract path if needed (example for Windows)
 # pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'

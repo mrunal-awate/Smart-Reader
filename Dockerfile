@@ -1,17 +1,21 @@
-# Use a specific, secure Python image
-FROM python:3.12.4-slim
+# Use an official Python runtime as a parent image
+FROM python:3.12-slim
 
-# Install dependencies and security updates
-RUN apt-get update && apt-get upgrade -y
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    tesseract-ocr \
+    && apt-get clean
 
-# Install necessary Python libraries
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Set up app and other configurations
-COPY . /app
+# Set the working directory in the container
 WORKDIR /app
 
-# Expose the application port
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install required Python packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the port that Flask will run on
 EXPOSE 8080
 
 # Run the application
