@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Reader for Blind People</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Smart Reader for Blind People</h1>
+
+    <!-- Image Upload Form -->
+    <form id="upload-form" method="POST" enctype="multipart/form-data">
+      <label for="language">Select Language:</label>
+      <select name="language" id="language">
+        <option value="eng">English</option>
+        <option value="hin">Hindi</option>
+        <option value="mar">Marathi</option>
+      </select>
+
+      <label for="image">Upload an Image:</label>
+      <input type="file" id="image" name="image" accept="image/*" required />
+
+      <button type="submit">Read Image</button>
+    </form>
+
+    <!-- Display Extracted Text and Audio -->
+    <div class="output">
+      <h2>Extracted Text:</h2>
+      <p id="extracted-text">(Your text will appear here)</p>
+
+      <h2>Audio Output:</h2>
+      <audio id="audio-player" controls>
+        <source id="audio-source" src="" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <!-- JavaScript to Handle AJAX Form Submission -->
+  <script src="/static/script.js"></script>
+</body>
+
+</html>

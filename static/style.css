@@ -1,0 +1,176 @@
+/* Reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8, #e4e7ed);
+}
+
+/* Center the container */
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: scale(0.98);
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+/* Animation for container */
+@keyframes slideIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #007bff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  animation: fadeInText 1s ease-out;
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Styling for labels */
+label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #555;
+  transition: color 0.3s;
+}
+
+label:hover {
+  color: #007bff;
+}
+
+/* Input and select fields */
+select,
+input[type="file"] {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+select:focus,
+input[type="file"]:focus {
+  border-color: #007bff;
+  background-color: #e9f7ff;
+  outline: none;
+}
+
+/* Button styling with hover effect */
+button {
+  padding: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: translateY(1px);
+  background-color: #004494;
+}
+
+/* Output section */
+.output {
+  margin-top: 30px;
+  opacity: 0;
+  animation: fadeInOutput 1s ease-out forwards;
+}
+
+@keyframes fadeInOutput {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.output h2 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #333;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+/* Styling for extracted text */
+#extracted-text {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  min-height: 100px;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+#extracted-text:hover {
+  background-color: #e9ecef;
+}
+
+/* Audio player styling */
+audio {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
