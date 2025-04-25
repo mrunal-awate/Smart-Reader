@@ -1,5 +1,6 @@
 # Use a Python base image
-FROM python:3.12-slim
+FROM python:3.10
+
 
 # Install system dependencies if needed (only if you need any)
 # RUN apt-get update && apt-get install -y <package-name> && rm -rf /var/lib/apt/lists/*
